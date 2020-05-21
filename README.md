@@ -57,8 +57,9 @@ docker-compose up
           "name": "String",
           "list_price": "Number",
           "sale_price": "Number",
-          "inventory": [
+          "sizes": [
             {
+              "id": "Number",
               "size": "String",
               "quantity": "Number"
             },
@@ -97,8 +98,9 @@ docker-compose up
           "name": "String",
           "list_price": "Number",
           "sale_price": "Number",
-          "inventory": [
+          "sizes": [
             {
+              "id": "Number",
               "size": "String",
               "quantity": "Number"
             },
@@ -173,10 +175,11 @@ docker-compose up
         "name": "String",
         "list_price": "Number",
         "sale_price": "Number",
-        "inventory": [
+        "sizes": [
         {
-            "size": "String",
-            "quantity": "Number"
+          "id": "Number",
+          "size": "String",
+          "quantity": "Number"
         }
         ]
     }
@@ -205,10 +208,11 @@ docker-compose up
         "name": "String",
         "list_price": "Number",
         "sale_price": "Number",
-        "inventory": [
+        "sizes": [
         {
-            "size": "String",
-            "quantity": "Number"
+          "id": "Number",
+          "size": "String",
+          "quantity": "Number"
         }
         ]
     }
@@ -256,7 +260,7 @@ docker-compose up
 
 </details>
 
-## Get shoe size
+## Get shoe color sizes
 
 <details> 
   <summary>Click To Expand</summary>
@@ -272,15 +276,15 @@ docker-compose up
 
 ```json
     {
-        "id": "Number",
-        "size": "String",
-        "quantity": "Number"
+      "id": "Number",
+      "size": "String",
+      "quantity": "Number"
     }
 ```
 
 </details>
 
-## Add shoe size
+## Add shoe color size
 
 <details> 
   <summary>Click To Expand</summary>
@@ -303,7 +307,7 @@ docker-compose up
 ```
 </details>
   
-## Update shoe size quantity
+## Update shoe color size
   
 <details> 
   <summary>Click To Expand</summary>
@@ -326,7 +330,7 @@ docker-compose up
 ```
 </details>
 
-## Delete shoe size
+## Delete shoe size size
 
 <details> 
   <summary>Click To Expand</summary>
