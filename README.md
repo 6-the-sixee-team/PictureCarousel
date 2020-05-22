@@ -29,7 +29,12 @@ docker-compose up
 
 # Server API
 
-## Get shoe
+## Shoe
+
+<details> 
+  <summary>Click To Expand</summary>
+
+### Get 
 
 <details> 
   <summary>Click To Expand</summary>
@@ -57,6 +62,12 @@ docker-compose up
           "name": "String",
           "list_price": "Number",
           "sale_price": "Number",
+          "images": [
+            {
+              "id": "Number",
+              "url": "String"
+            }
+          ],
           "sizes": [
             {
               "id": "Number",
@@ -67,13 +78,14 @@ docker-compose up
           ]
         },
         ...
-      ]
+      ],
+
     }
 ```
 
 </details>
 
-## Add shoe
+### Add 
 
 <details> 
   <summary>Click To Expand</summary>
@@ -98,6 +110,12 @@ docker-compose up
           "name": "String",
           "list_price": "Number",
           "sale_price": "Number",
+          "images": [
+            {
+              "id": "Number",
+              "url": "String"
+            }
+          ],
           "sizes": [
             {
               "id": "Number",
@@ -114,7 +132,7 @@ docker-compose up
 
 </details>
 
-## Update shoe
+### Update 
 
 <details> 
   <summary>Click To Expand</summary>
@@ -140,7 +158,7 @@ docker-compose up
 
 </details>
 
-## Delete shoe
+### Delete 
 
 <details> 
   <summary>Click To Expand</summary>
@@ -154,7 +172,14 @@ docker-compose up
 
 </details>
 
-## Get shoe color
+</details>
+
+## Shoe Color
+
+<details> 
+  <summary>Click To Expand</summary>
+
+### Get
 
 <details> 
   <summary>Click To Expand</summary>
@@ -175,6 +200,12 @@ docker-compose up
         "name": "String",
         "list_price": "Number",
         "sale_price": "Number",
+          "images": [
+            {
+              "id": "Number",
+              "url": "String"
+            }
+          ],
         "sizes": [
         {
           "id": "Number",
@@ -187,7 +218,7 @@ docker-compose up
 
 </details>
 
-## Add shoe color
+### Add 
 
 <details> 
   <summary>Click To Expand</summary>
@@ -208,19 +239,25 @@ docker-compose up
         "name": "String",
         "list_price": "Number",
         "sale_price": "Number",
+        "images": [
+          {
+            "id": "Number",
+            "url": "String"
+          }
+        ],
         "sizes": [
-        {
-          "id": "Number",
-          "size": "String",
-          "quantity": "Number"
-        }
+          {
+            "id": "Number",
+            "size": "String",
+            "quantity": "Number"
+          }
         ]
     }
 ```
 
 </details>
 
-## Update shoe color
+### Update
 
 <details> 
   <summary>Click To Expand</summary>
@@ -246,7 +283,7 @@ docker-compose up
 
 </details>
 
-## Delete shoe color
+### Delete 
 
 <details> 
   <summary>Click To Expand</summary>
@@ -260,7 +297,116 @@ docker-compose up
 
 </details>
 
-## Get shoe color sizes
+</details>
+
+## Shoe Color Images
+
+<details> 
+  <summary>Click To Expand</summary>
+
+### Get (one image)
+
+<details> 
+  <summary>Click To Expand</summary>
+
+  * GET `/api/products/:id/color/:id/image/:id`
+
+**Path Parameters :**
+  * `id` : product id, color id, image id
+
+**Success Status Code :** `200`
+
+**Returns :** JSON (specific shoe image)
+
+```json
+    {
+      "images": [
+        {
+          "id": "Number",
+          "url": "String"
+        }
+      ]
+    }
+```
+
+</details>
+
+### Add 
+
+<details> 
+  <summary>Click To Expand</summary>
+
+  * POST `/api/products/:id/color/:id/image`
+
+  **Path Parameters:**
+  * `id` : product id, color id, image
+
+**Success Status Code :** `201`
+
+**Request Body :** JSON (new image)
+
+```json
+    {
+      "images": [
+        {
+          "id": "Number",
+          "url": "String"
+        }
+      ]
+    }
+```
+
+</details>
+
+### Update
+
+<details> 
+  <summary>Click To Expand</summary>
+
+  * PATCH `/api/products/:id/color/:id/image/:id`
+
+**Path Parameters :**
+  * `id` : product id, color id, image id
+
+**Success Status Code :** `202`
+
+**Request Body :** JSON (update image)
+
+```json
+    {
+      "images": [
+        {
+          "id": "Number",
+          "url": "String"
+        }
+      ]
+    }
+```
+
+</details>
+
+### Delete 
+
+<details> 
+  <summary>Click To Expand</summary>
+
+* DELETE `/api/products/:id/color/:id/image/:id`
+
+**Path Parameters :**
+  * `id` : product id, color id, image id
+
+**Success Status Code :** `204`
+
+</details>
+
+</details>
+
+## Shoe Color Size
+
+<details> 
+  <summary>Click To Expand</summary>
+
+### Get
 
 <details> 
   <summary>Click To Expand</summary>
@@ -284,7 +430,7 @@ docker-compose up
 
 </details>
 
-## Add shoe color size
+### Add 
 
 <details> 
   <summary>Click To Expand</summary>
@@ -307,7 +453,7 @@ docker-compose up
 ```
 </details>
   
-## Update shoe color size
+### Update
   
 <details> 
   <summary>Click To Expand</summary>
@@ -330,7 +476,7 @@ docker-compose up
 ```
 </details>
 
-## Delete shoe size size
+### Delete
 
 <details> 
   <summary>Click To Expand</summary>
@@ -341,5 +487,7 @@ docker-compose up
   * `id` : product id, color id, size id
 
 **Success Status Code :** `204`
+
+</details>
 
 </details>
