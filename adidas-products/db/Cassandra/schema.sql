@@ -17,22 +17,5 @@ CREATE TABLE shoe (
     size text,
     quantity int,
     image text
-    PRIMARY KEY (shoe_id)
+    PRIMARY KEY (shoe_id, color_id)
 ) WITH CLUSTERING ORDER BY (color_id);
--- --to query for prices
--- CREATE TABLE prices_by_date (
---   package_id uuid,
---   trip_id uuid,
---   trip_date date,
---   price smallint,
---   PRIMARY KEY (package_id, trip_id)
--- ) WITH CLUSTERING ORDER BY (trip_id ASC);
-
--- --to query for trips
--- CREATE TABLE trips (
---   trip_id uuid,
---   available boolean,
---   detail text,
---   duration int,
---   PRIMARY KEY (trip_id, available, duration)
--- ) WITH CLUSTERING ORDER BY (available DESC, duration ASC);

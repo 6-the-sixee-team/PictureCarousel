@@ -1,5 +1,3 @@
-CREATE SCHEMA IF NOT EXISTS adidas_product;
-
 DROP DATABASE IF EXISTS adidas_product;
 
 CREATE DATABASE adidas_product;
@@ -10,38 +8,41 @@ CREATE TABLE shoe (
     id SERIAL PRIMARY KEY,
     collection_name varchar(100),
     name varchar(100),
-    reviews INT,
-    color INT,
-    images INT,
+    reviews INT UNIQUE,
+    color INT UNIQUE,
     FOREIGN KEY (reviews) REFERENCES reviews,
     FOREIGN KEY (color) REFERENCES colors
-    FOREIGN KEY (images) REFERENCES images
 );
 
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
-    count INT,
-    avg INT,
+    average_rating INT,
+    shoe_id INT,
+    review_id INT,
+    FOREIGN KEY (shoe_id) REFERENCES shoe,
+    FOREIGN KEY (review_id) REFERENCES review
+);
+
+CREATE TABLE review (
+    id SERIAL PRIMARY KEY,
+    rating INT,
+    content varchar(350)
 );
 
 CREATE TABLE colors (
+    id SERIAL PRIMARY KEY,
+    shoe_id INT,
+    color_id INT,
+    FOREIGN KEY (shoe_id) REFERENCES shoe,
+    FOREIGN KEY (color_id) REFERENCES color
+);
+
+CREATE TABLE color (
     id SERIAL PRIMARY KEY,
     url varchar(100),
     name INT,
     price INT,
     sizes INT,
-    FOREIGN KEY (price) REFERENCES reviews,
-    FOREIGN KEY (sizes) REFERENCES sizes
-);
-
-CREATE TABLE sizes (
-    id SERIAL PRIMARY KEY,
-    list_price INT,
-    sale_price INT
-);
-
-CREATE TABLE images (
-    id SERIAL PRIMARY KEY,
     image_1 varchar(100),
     image_2 varchar(100),
     image_3 varchar(100),
@@ -51,6 +52,24 @@ CREATE TABLE images (
     image_7 varchar(100),
     image_8 varchar(100),
     image_9 varchar(100),
-    image_10 varchar(100)
+    image_10 varchar(100),
+    FOREIGN KEY (sizes) REFERENCES sizes
 );
+
+CREATE TABLE sizes (
+    id SERIAL PRIMARY KEY,
+    color_id INT,
+    size_id INT,
+    FOREIGN KEY (color_id) REFERENCES color,
+    FOREIGN KEY (size_id) REFERENCES size
+);
+
+CREATE TABLE size (
+    id SERIAL PRIMARY KEY,
+    size INT,
+    available BOOLEAN,
+    list_price INT,
+    sale_price INT
+);
+
 
