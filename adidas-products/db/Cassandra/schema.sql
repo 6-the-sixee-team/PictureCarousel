@@ -4,18 +4,26 @@ WITH replication = {'class' : 'SimpleStrategy', 'replication_factor': 3};
 USE adidas_product;
 
 CREATE TABLE shoe (
+    -- shoe
     shoe_id uuid,
-    name text,
+    shoe_name text,
     collection_name text,
-    review_count int,
-    review_avg int,
-    color_id int,
+    -- review
+    reviews_average_rating int,
+    review_id int,
+    review_rating int,
+    review_title text,
+    review_content text,
+    -- color
+    colors_id int,
     color_url text,
     color_name text,
-    list_price int,
-    sale_price int,
-    size text,
+    images text,-- ! add something to text in images to make in expand vertically
+    -- size
+    size_id int,
+    size int,
     quantity int,
-    image text
+    list_price int,
+    sale_price int
     PRIMARY KEY (shoe_id, color_id)
 ) WITH CLUSTERING ORDER BY (color_id);

@@ -1,0 +1,6 @@
+/**
+ * sample shoe object = 
+ * {
+ *  
+ * }
+ */

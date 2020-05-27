@@ -6,8 +6,8 @@ CREATE DATABASE adidas_product;
 
 CREATE TABLE shoe (
     id SERIAL PRIMARY KEY,
-    collection_name varchar(100),
     name varchar(100),
+    collection_name varchar(100),
     reviews INT UNIQUE,
     color INT UNIQUE,
     FOREIGN KEY (reviews) REFERENCES reviews,
@@ -25,6 +25,7 @@ CREATE TABLE reviews (
 
 CREATE TABLE review (
     id SERIAL PRIMARY KEY,
+    title varchar(100),
     rating INT,
     content varchar(350)
 );
@@ -67,7 +68,7 @@ CREATE TABLE sizes (
 CREATE TABLE size (
     id SERIAL PRIMARY KEY,
     size INT,
-    available BOOLEAN,
+    quantity INT,
     list_price INT,
     sale_price INT
 );
