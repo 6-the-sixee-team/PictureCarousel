@@ -1,5 +1,5 @@
 CREATE KEYSPACE IF NOT EXISTS adidas_product
-WITH replication = {'class' : 'SimpleStrategy', 'replication_factor': 3};
+WITH replication = {'class' : 'SimpleStrategy', 'replication_factor': 1};
 
 USE adidas_product;
 
@@ -8,12 +8,6 @@ CREATE TABLE shoe (
     shoe_id uuid,
     shoe_name text,
     collection_name text,
-    -- review
-    reviews_average_rating int,
-    review_id int,
-    review_rating int,
-    review_title text,
-    review_content text,
     -- color
     colors_id int,
     color_url text,

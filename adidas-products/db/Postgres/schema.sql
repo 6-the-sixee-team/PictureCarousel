@@ -10,24 +10,7 @@ CREATE TABLE shoe (
     collection_name varchar(100),
     reviews INT UNIQUE,
     color INT UNIQUE,
-    FOREIGN KEY (reviews) REFERENCES reviews,
     FOREIGN KEY (color) REFERENCES colors
-);
-
-CREATE TABLE reviews (
-    id SERIAL PRIMARY KEY,
-    average_rating INT,
-    shoe_id INT,
-    review_id INT,
-    FOREIGN KEY (shoe_id) REFERENCES shoe,
-    FOREIGN KEY (review_id) REFERENCES review
-);
-
-CREATE TABLE review (
-    id SERIAL PRIMARY KEY,
-    title varchar(100),
-    rating INT,
-    content varchar(350)
 );
 
 CREATE TABLE colors (
