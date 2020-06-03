@@ -1,9 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors");
+// const cors = require("cors");
 const path = require("path");
 const router = require("./router.js");
-const compression = require('compression')
+const compression = require('compression');
+const newRelic = require('newrelic');
 
 // Instantiate the express server
 const app = express();
@@ -12,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // enable cross-origin resource sharing CORS
-app.use(cors());
+// app.use(cors());
 app.use(compression());
 
 let setCache = function (req, res, next) {
@@ -40,7 +41,7 @@ const PORT_1 = process.env.PRODUCT_PORT || 3001;
 // });
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
-app.use("/api/products", router);
+app.use("/api", router);
 // Start the server on the provided port
 app.listen(PORT_1, () =>
   console.log(`Listening on port: http://localhost:${PORT_1}`)

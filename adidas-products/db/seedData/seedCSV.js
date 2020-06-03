@@ -1,123 +1,118 @@
-/**
- * sample shoe object = 
- * {
- *  -- shoe
- * shoe_id int,-
-    shoe_name text,-
-    collection_name text,-
-    -- color
-    color_id int, -
-    color_url text,-
-    color_name text,-
-    images text,-
-    -- size
-    quantity_of_NUM int,-
-    list_price_of_NUM int-
- * }
- */
-
- // shoe maker 
+ const path = require('path');
+ const faker = require('faker');
  
- function shoeMaker(shoe_id, imagesArr) {
-     let outputObj = {};
-
-     // ! shoe
-     // shoe_id
-    outputObj.shoe_id = shoe_id;
-    //  shoe_name text,
-    shoeNames = ["Ultra Boost","Gazelle", "Samba", "Yeezy", "NMD", "Pharrell Hu NMD", "Yeezy Boost 350 V2", "Superstar", 'Racer', 'Sense Boost', 'MatchBreak', 'Prophere', 'Continental', 'Sobakol', 'Deerupt', 'Kamanda'];
-    outputObj.shoe_name = shoeNames[Math.floor(shoeNames.length * Math.random())];
-    //  collection_name text,
-     collections = ['Running', 'Originals', 'Walking', 'Tennis', 'Essentials'];
-     outputObj.collection_name = collections[Math.floor(collections.length * Math.random())];
-     // ! color
-     // color_id
-     outputObj.color_id = (Math.random()*1000000000).toFixed(0)
-     //  color_url text,
-     outputObj.color_url = imagesArr[Math.floor(imagesArr.length * Math.random())];
-     //  color_name text,
-     let color_names = ['Cloud White', 'Dash Grey', 'Solar Red', 'Core Black', 'Flash Orange', 'Carbon', 'Yellow', 'Scarlet', 'Glory Purple', 'Colligarate Navy'];
-     outputObj.color_name = color_names[Math.floor(color_names.length * Math.random())] + " / " + color_names[Math.floor(color_names.length * Math.random())] + " / " + color_names[Math.floor(color_names.length * Math.random())];
-     //  images text,
-     let start_idx = (Math.floor(imagesArr.length - 10 ) * Math.random());
-     let end_idx = start_idx + 10;
-     outputObj.images = imagesArr.slice(start_idx, end_idx).join(",");
-     // ! size
-    //  quantity int,
-    //  list_price int,
-    for (let i = 7; i <= 13; i += 0.5) {
-        sizeAdder(i, outputObj)
-    }
-     
-    return outputObj;
-}
-
- function sizeAdder(size, object) {
-     object[ "quantity_of_" + size] = Math.floor(Math.random() * 10000);
-     object[ "list_price_of_" + size] = Math.floor(Math.random() * 1000);
-    }
-    
-    const path = require('path');
-    const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-    const csvWriter = createCsvWriter({
-        path: path.join(__dirname, 'seeded.csv'),
-        header: [
-            {id: 'shoe_id', title: 'SHOE INDEX'},
-            {id: 'shoe_name', title: 'SHOE NAME'},
-            {id: 'collection_name', title: 'COLLECTION NAME'},
-            {id: 'color_id', title: 'COLOR INDEX'},
-            {id: 'color_url', title: 'COLOR URL'},
-            {id: 'color_name', title: 'COLOR NAME'},
-            {id: 'images', title: 'IMAGES'},
-            {id: 'quantity_of_7', title: 'QUANTITY OF SIZE 7'},
-            {id: 'list_price_of_7', title: 'PRICE OF SIZE 7'},
-            {id: 'quantity_of_7.5', title: 'QUANTITY OF SIZE 7.5'},
-            {id: 'list_price_of_7.5', title: 'PRICE OF SIZE 7.5'},
-            {id: 'quantity_of_8', title: 'QUANTITY OF SIZE 8'},
-            {id: 'list_price_of_8', title: 'PRICE OF SIZE 8'},
-            {id: 'quantity_of_8.5', title: 'QUANTITY OF SIZE 8.5'},
-            {id: 'list_price_of_8.5', title: 'PRICE OF SIZE 8.5'},
-            {id: 'quantity_of_9', title: 'QUANTITY OF SIZE 9'},
-            {id: 'list_price_of_9', title: 'PRICE OF SIZE 9'},
-            {id: 'quantity_of_9.5', title: 'QUANTITY OF SIZE 9.5'},
-            {id: 'list_price_of_9.5', title: 'PRICE OF SIZE 9.5'},
-            {id: 'quantity_of_10', title: 'QUANTITY OF SIZE 10'},
-            {id: 'list_price_of_10', title: 'PRICE OF SIZE 10'},
-            {id: 'quantity_of_10.5', title: 'QUANTITY OF SIZE 10.5'},
-            {id: 'list_price_of_10.5', title: 'PRICE OF SIZE 10.5'},
-            {id: 'quantity_of_11', title: 'QUANTITY OF SIZE 11'},
-            {id: 'list_price_of_11', title: 'PRICE OF SIZE 11'},
-            {id: 'quantity_of_11.5', title: 'QUANTITY OF SIZE 11.5'},
-            {id: 'list_price_of_11.5', title: 'PRICE OF SIZE 11.5'},
-            {id: 'quantity_of_12', title: 'QUANTITY OF SIZE 12'},
-            {id: 'list_price_of_12', title: 'PRICE OF SIZE 12'},
-            {id: 'quantity_of_12.5', title: 'QUANTITY OF SIZE 12.5'},
-            {id: 'list_price_of_12.5', title: 'PRICE OF SIZE 12.5'},
-            {id: 'quantity_of_13', title: 'QUANTITY OF SIZE 13'},
-            {id: 'list_price_of_13', title: 'PRICE OF SIZE 13'}
-        ]
-    });
-
-    function arrayMaker() {
-        let output = [];
-        for ( let i = 0; i < 101; i++) {
-            output.push(`image_${i}`)
+ 
+ function arrayMaker() {
+     let output = [];
+     for ( let i = 0; i < faker.random.number({min:2, max:7}); i++) {
+         // ? use faker images
+            output.push(faker.image.imageUrl(640,480,"shoes"))//"https://loremflickr.com/g/320/240/adidas,shoe")
         };
         return output;
     }
-
+    
     function shoesStockpiler(num) {
         var output = [];
-        for (var i = 0; i < num; i++) {
-            output.push(shoeMaker(Math.floor(Math.random()*1000000000), arrayMaker()))
+        var outputObj = {};
+        
+        // ? shoe
+        for (var i = 0; i < num / 60; i++) {
+            // shoe_id
+            outputObj.shoe_id = faker.random.number({min:100000000000, max:999999999999});
+            //  shoe_name text,
+            shoeNames = ["Ultra Boost","Gazelle", "Samba", "Yeezy", "NMD", "Pharrell Hu NMD", "Yeezy Boost 350 V2", "Superstar", 'Racer', 'Sense Boost', 'MatchBreak', 'Prophere', 'Continental', 'Sobakol', 'Deerupt', 'Kamanda'];
+            outputObj.shoe_name = shoeNames[Math.floor(shoeNames.length * Math.random())];
+            //  collection_name text,
+            collections = ['Running', 'Originals', 'Walking', 'Tennis', 'Essentials'];
+            outputObj.collection_name = collections[Math.floor(collections.length * Math.random())];
+
+            // review count, review avg
+            outputObj.review_count = faker.random.number({min:1, max:9999});
+            outputObj.review_avg = faker.random.number({min:1, max:5});
+            
+            // ? color
+            for ( var j = 0; j < 5; j++) {
+                var imagesArr = arrayMaker()
+                // color_id
+                outputObj.color_id = faker.random.number({min:100000000000, max:999999999999})
+                //  color_url text,
+                outputObj.color_url = imagesArr[0];
+                //  color_name text,
+                let color_names = ['Cloud White', 'Dash Grey', 'Solar Red', 'Core Black', 'Flash Orange', 'Carbon', 'Yellow', 'Scarlet', 'Glory Purple', 'Colligarate Navy'];
+                outputObj.color_name = color_names[Math.floor(color_names.length * Math.random())] + " / " + color_names[Math.floor(color_names.length * Math.random())] + " / " + color_names[Math.floor(color_names.length * Math.random())];
+                //  images text,
+                outputObj.images = imagesArr.join(" ");
+                //  list_price int,
+                outputObj.list_price = faker.random.number({min:0, max:1000})
+                //  sale_price int,
+                outputObj.sale_price = Math.floor(output.list_price * (faker.random.number({min:50, max:100}) / 100))
+                
+                // ? size
+                for (var k = 7; k <= 13; k += 0.5) {
+                    // size id
+                    outputObj.size_id = faker.random.number({min:100000000000, max:999999999999});
+                    outputObj.size_number = k;
+                    //  quantity int,
+                    outputObj.quantity = faker.random.number({min:0, max:10000});
+                    
+                    // ? output
+                    output.push(JSON.parse(JSON.stringify(outputObj)));
+                }
+                
+            }
         };
         return output;
     }
+        
+    const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+    const csvWriter = createCsvWriter({
+        path: path.join(__dirname,/* 'seededCSVFiles',*/ 'seededExample.csv'),
+        header: [
+            {id: 'shoe_id', title: 'shoe_id'},
+            {id: 'shoe_name', title: 'shoe_name'},
+            {id: 'collection_name', title: 'collection_name'},
+            // ! review count, review avg
+            {id: 'review_count', title: 'review_count'},
+            {id: 'review_avg', title: 'review_avg'},
+            {id: 'color_id', title: 'color_id'},
+            {id: 'color_url', title: 'color_url'},
+            {id: 'color_name', title: 'color_name'},
+            {id: 'images', title: 'images'},
+            //  sale price
+            //  list price should be here
+            {id: 'list_price', title: 'list_price'},
+            {id: 'sale_price', title: 'sale_price'},
+            {id: 'size_id', title: 'size_id'},
+            {id: 'size_number', title: 'size_number'},
+            {id: 'quantity', title: 'quantity'}
+            
+        ]
+    });
     
-    const records = shoesStockpiler(10000000)
-    
-    csvWriter.writeRecords(records)       // returns a promise
+    csvWriter.writeRecords(shoesStockpiler(60))       // returns a promise
     .then(() => {
         console.log('...Done');
     });
- 
+    
+    /**
+     * sample shoe object = 
+     * {
+     *  -- shoe
+     * shoe_id int,-
+     shoe_name text,-
+        collection_name text,-
+        // ! review count, review avg
+        -- color
+        color_id int, -
+        color_url text,-
+        color_name text,-
+        images text,- USE FAKER IMAGES
+        // ! sale price
+        // ! list price should be here
+        -- size
+        size_id
+        size_name
+        quantity_of_NUM int,-
+        list_price_of_NUM int-
+     * }
+     */
