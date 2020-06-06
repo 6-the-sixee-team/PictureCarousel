@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const cors = require("cors");
+const cors = require("cors");
 const path = require("path");
 const router = require("./router.js");
 const compression = require('compression');
@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // enable cross-origin resource sharing CORS
-// app.use(cors());
+app.use(cors());
 app.use(compression());
 
 let setCache = function (req, res, next) {

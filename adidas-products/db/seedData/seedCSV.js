@@ -4,9 +4,11 @@
  
  function arrayMaker() {
      let output = [];
+     let shoe = faker.random.number({min:1, max:4});
+     let color = faker.random.number({min:0, max:4})
      for ( let i = 0; i < faker.random.number({min:2, max:7}); i++) {
          // ? use faker images
-            output.push(faker.image.imageUrl(640,480,"shoes"))//"https://loremflickr.com/g/320/240/adidas,shoe")
+            output.push(`PERF00${shoe}_color${color}_pic${i}.jpg`)//"https://loremflickr.com/g/320/240/adidas,shoe")
         };
         return output;
     }
@@ -31,7 +33,7 @@
             outputObj.review_avg = faker.random.number({min:1, max:5});
             
             // ? color
-            for ( var j = 0; j < 5; j++) {
+            for ( var j = 0; j < (6 - (faker.random.number({min: 0, max: 2}))); j++) {
                 var imagesArr = arrayMaker()
                 // color_id
                 outputObj.color_id = faker.random.number({min:100000000000, max:999999999999})
@@ -42,16 +44,18 @@
                 outputObj.color_name = color_names[Math.floor(color_names.length * Math.random())] + " / " + color_names[Math.floor(color_names.length * Math.random())] + " / " + color_names[Math.floor(color_names.length * Math.random())];
                 //  images text,
                 outputObj.images = imagesArr.join(" ");
+                //prices
+                let price = faker.random.number({min:0, max:1000});
                 //  list_price int,
-                outputObj.list_price = faker.random.number({min:0, max:1000})
+                outputObj.list_price = price;
                 //  sale_price int,
-                outputObj.sale_price = Math.floor(output.list_price * (faker.random.number({min:50, max:100}) / 100))
+                outputObj.sale_price = Math.floor(price * (faker.random.number({min:50, max:100}) / 100))
                 
                 // ? size
-                for (var k = 7; k <= 13; k += 0.5) {
+                for (var k = 4; k <= 14; k += 0.5) {
                     // size id
                     outputObj.size_id = faker.random.number({min:100000000000, max:999999999999});
-                    outputObj.size_number = k;
+                    outputObj.size_number = `M ${k} / W ${k + 1}`;
                     //  quantity int,
                     outputObj.quantity = faker.random.number({min:0, max:10000});
                     
