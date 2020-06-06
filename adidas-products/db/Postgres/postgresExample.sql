@@ -1,8 +1,8 @@
-CREATE DATABASE IF NOT EXISTS adidas_product;
+CREATE DATABASE IF NOT EXISTS example;
 
--- CREATE DATABASE adidas_product;
+-- CREATE DATABASE example;
 
-\c adidas_product;
+\c example;
 
 DROP TABLE IF EXISTS shoe_info;
 DROP TABLE IF EXISTS shoe;
@@ -58,16 +58,7 @@ CREATE TABLE shoe_info (
     list_price INT
 );
 
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded1.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded2.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded3.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded4.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded5.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded6.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded7.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded8.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded9.csv' DELIMITER ',' CSV HEADER;
-\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededCSVFiles/seeded10.csv' DELIMITER ',' CSV HEADER;
+\COPY shoe_info (shoe_id, shoe_name, collection_name,color_id,color_url,color_name,images,size_id,size_name,quantity,list_price) FROM '/home/roohanjyot/Documents/Github/adidas_front_end/adidas-products/db/seedData/seededExample.csv' DELIMITER ',' CSV HEADER;
 
 -- ? shoe
 -- step 1
@@ -150,9 +141,3 @@ ALTER TABLE size
     DROP column images;
 --step 3
 DROP TABLE shoe_info;
-
--- queries
-
--- SELECT shoe.shoe_id, shoe.shoe_name, shoe.collection_name, color.color_id, color.color_name, color.color_url, color.images, size.size_id, size.size_name, size.quantity, size.list_price 
--- FROM shoe, color, size, sizes, colors
--- WHERE shoe.shoe_id = ()

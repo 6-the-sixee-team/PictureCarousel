@@ -2,7 +2,15 @@
 .DS_Store
 
 #Our node_modules folder is installed when you run the install script so we don't need to save it in our repo
-node_modules
+*/node_modules/*
+
+#Why doesnt this work
+
+*/seededCSVFilles/*
+
+seeded*
+
+newrelic.js
 
 rootkey.csv
 rootkey.zsh
