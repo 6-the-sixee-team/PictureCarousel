@@ -70,7 +70,7 @@
         
     const createCsvWriter = require('csv-writer').createObjectCsvWriter;
     const csvWriter = createCsvWriter({
-        path: path.join(__dirname,/* 'seededCSVFiles',*/ 'seededExample.csv'),
+        path: path.join(__dirname,'seededCSVFiles','seeded1.csv'),
         header: [
             {id: 'shoe_id', title: 'shoe_id'},
             {id: 'shoe_name', title: 'shoe_name'},
@@ -93,7 +93,7 @@
         ]
     });
     
-    csvWriter.writeRecords(shoesStockpiler(60))       // returns a promise
+    csvWriter.writeRecords(shoesStockpiler(1000000))       // returns a promise
     .then(() => {
         console.log('...Done');
     });
